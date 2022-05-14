@@ -28,15 +28,21 @@ namespace Tojam2022
 
 		private Timer _damageTimer;
 
+		public float Damage => _damageTimer.Time / _maxDamageTime;
+
 		[SerializeField]
 		public float _maxHungerTime = 10;
 
 		private Timer _hungerTimer;
 
+		public float Hunger => _hungerTimer.Time / _maxHungerTime;
+
 		[SerializeField]
 		public float _maxSleepinessTime = 10;
 
 		private Timer _sleepinessTimer;
+
+		public float Sleepiness => _sleepinessTimer.Time / _maxSleepinessTime;
 
 
 		[SerializeField]
@@ -44,8 +50,12 @@ namespace Tojam2022
 
 		private Timer _angerTimer;
 
+		public float Anger => _angerTimer.Time / _maxHungerTime;
+
 
 		private AlienState _alienState;
+
+		public AlienState State => _alienState;
 
 		//public Vector3 Direction;
 
@@ -110,15 +120,20 @@ namespace Tojam2022
 			{
 				case AlienState.None:
 					break;
+
 				case AlienState.Game:
 					break;
 			}
+
 			switch (state)
 			{
 				case AlienState.None:
 					break;
 				case AlienState.Game:
-
+					_damageTimer.Reset(_maxDamageTime);
+					_hungerTimer.Reset(_maxHungerTime);
+					_sleepinessTimer.Reset(_maxSleepinessTime);
+					_angerTimer.Reset(_maxAngerTime);
 					break;
 
 			}

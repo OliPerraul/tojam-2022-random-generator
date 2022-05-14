@@ -24,6 +24,7 @@ namespace Tojam2022
         {
             foreach (Food f in foods)
             {
+                if (f == null) continue;
                 f._FishFoodContainer = this;
             }
             //StartCoroutine(TestFishFoodContainer());

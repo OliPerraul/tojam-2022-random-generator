@@ -100,7 +100,7 @@ namespace Cirrus.Unity.Objects
 		}
 
 		public virtual void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-		{
+		{		
 			OnSceneLoadedHandler?.Invoke(scene, mode);
 		}
 

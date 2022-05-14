@@ -33,6 +33,9 @@ namespace Tojam2022
 		private bool _active = false;
 		public bool IsActive => _active;
 
+		// TODO
+		public float Increment;
+
 		public float DeltaTime =>
 			_isFixedUpdate ? UnityEngine.Time.fixedDeltaTime : UnityEngine.Time.deltaTime;
 

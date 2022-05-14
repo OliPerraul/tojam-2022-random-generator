@@ -30,32 +30,20 @@ namespace Tojam2022
 	{
 		private GameState _gameState;
 
-		private Timer _artifactDiscoveredTimer;
-
-		[SerializeField]
-		private Range_ _artifactDiscoveredTime = new Range_(1, 10);
-
-		[SerializeField]
-		private List<AlienArtifactBase> _artifacts;
 
 		//private RandomizationAssetBase
 
 		public override void Awake()
 		{
-			Persist();
-			_artifactDiscoveredTimer = new Timer(_OnArtifactDiscoveredTimeout, true);
+			if (Persist())
+			{
+				base.Awake();
+			}
 		}		
 
 		public override void Start()
 		{
 			base.Start();
-			if (_gameState == GameState.None)
-			{
-				if (SceneManager.GetActiveScene().name == "Game")
-				{
-					SetState(GameState.Game);
-				}
-			}
 		}
 
 		public void Update()
@@ -69,39 +57,69 @@ namespace Tojam2022
 			}
 		}
 
-		private void _OnArtifactDiscoveredTimeout()
-		{
-			AlienArtifactBase prefab = _artifacts.Choice(_artifacts.Select(x => x.Chance));
-		}
-
 		private void _OnAlienDied()
 		{
 			SetState(GameState.GameOver);
 		}
 
-		public void SetState(GameState state, params object[] args)
+		public override void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 		{
+			base.OnSceneLoaded(scene, mode);
+
+			Debug.Log("Scene Loaded");
+
 			switch (_gameState)
 			{
-				case GameState.Game:
-					_artifactDiscoveredTimer.Stop();
-					Alien.Instance.onAlienDiedHandler -= _OnAlienDied;
+				case GameState.None:
+					if (SceneManager.GetActiveScene().name == "Game") SetState(GameState.Game);
 					break;
-			}
 
-			switch (state)
-			{
-				case GameState.Menu:
-					_artifactDiscoveredTimer.Stop();
-					break;
 				case GameState.Game:
-					_artifactDiscoveredTimer.Reset(_artifactDiscoveredTime.Random());
+					AlienArtifactManager.Instance.DoStart();
 					Alien.Instance.onAlienDiedHandler += _OnAlienDied;
 					Alien.Instance.SetState(AlienState.Game);
 					break;
 			}
+		}
 
-			_gameState = state;
+		// Load given scene, if already init simply re-run on scene loaded
+		public void LoadScene(string scene)
+		{
+			if (SceneManager.GetActiveScene().name == scene)
+			{
+				OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+			}
+			else
+			{
+				SceneManager.LoadScene(scene);
+			}
+		}
+
+
+		public void SetState(GameState state, params object[] args)
+		{
+			// Exit from state
+			switch (_gameState)
+			{
+				case GameState.Game:
+					AlienArtifactManager.Instance.DoStop();
+					Alien.Instance.onAlienDiedHandler -= _OnAlienDied;
+					break;
+			}
+
+			// Enter state
+			switch (state)
+			{
+				case GameState.Game:
+					_gameState = state;
+					LoadScene("Game");
+					break;
+				case GameState.GameOver:
+					_gameState = state;
+					LoadScene("GameOver");
+					break;
+			}
+			
 		}
 
 	}

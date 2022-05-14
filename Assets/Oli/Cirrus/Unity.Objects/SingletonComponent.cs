@@ -10,7 +10,7 @@ namespace Cirrus.Unity.Objects
 		[NonSerialized]
 		protected static T _instance;
 
-		public void Persist()
+		public bool Persist()
 		{
 			if(
 				!_instance.NativeReferenceEquals(null) &&
@@ -19,12 +19,13 @@ namespace Cirrus.Unity.Objects
 				)
 			{
 				DestroyImmediate(gameObject);
-				return;
+				return false;
 			}
 
 			_instance = Instance;
 			transform.SetParent(null);
 			DontDestroyOnLoad(gameObject);
+			return true;
 		}
 
 		public override void OnDestroy()
