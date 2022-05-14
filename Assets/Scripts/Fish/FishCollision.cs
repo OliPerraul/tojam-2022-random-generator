@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishCollision : MonoBehaviour
+namespace Tojam2022
 {
-    public FlockManager myManager;
-
-
-    private void OnTriggerEnter(Collider collision)
+    public class FishCollision : MonoBehaviour
     {
-        if(collision.tag == "FishFood")
+        public FlockManager myManager;
+
+
+        private void OnTriggerEnter(Collider collision)
         {
-            collision.gameObject.GetComponent<Food>().FoodBiteDecrease();
+            if (collision.tag == "FishFood")
+            {
+                collision.gameObject.GetComponent<Food>().FoodBiteDecrease();
+            }
         }
     }
 }
