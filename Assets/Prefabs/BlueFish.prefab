@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5340650120687870596}
   - component: {fileID: 2490373349267726589}
   - component: {fileID: 1706525618798081694}
+  - component: {fileID: -1945495842323113174}
   m_Layer: 0
   m_Name: BlueFish
   m_TagString: Untagged
@@ -108,6 +109,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92916ebf5ba99bd4bb7cb0f684b52d39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myManager: {fileID: 0}
+--- !u!114 &-1945495842323113174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285139589519426261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60068111b469c9449af3ffb8c83272f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   myManager: {fileID: 0}
