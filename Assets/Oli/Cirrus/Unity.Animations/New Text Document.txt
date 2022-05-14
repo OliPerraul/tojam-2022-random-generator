@@ -1,0 +1,11 @@
+
+
+/// UNITY TIMELINE
+
+// NEW CLIP
+1. Start recording empty track
+2. Convert to clip
+
+
+/// EXISTING CLIP
+// Start recording from timeline, and then selector animator and add keyframes
