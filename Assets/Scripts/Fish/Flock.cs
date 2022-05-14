@@ -28,7 +28,7 @@ public class Flock : MonoBehaviour {
 	void Update () {
 
 		//determine the bounding box of the manager cube
-		Bounds b = new Bounds(myManager.transform.position, myManager.swimLimits * 2);
+		Bounds b = new Bounds(myManager.transform.position, myManager._SwimLimits * 2);
 		// if fish is outside the bounds of the cube or about to hit something
 		// then start turning around
 		RaycastHit hit = new RaycastHit();
@@ -55,7 +55,6 @@ public class Flock : MonoBehaviour {
 
 		if (turning)
 		{
-			
 			transform.rotation = Quaternion.Slerp(transform.rotation,
 									Quaternion.LookRotation(direction),
 									myManager.rotationSpeed * Time.deltaTime);
@@ -79,7 +78,7 @@ public class Flock : MonoBehaviour {
 	void ApplyRules()
     {
 		GameObject[] gos;
-		gos = myManager.allFish;
+		gos = myManager._AllFish;
 
 		Vector3 vcentre = Vector3.zero;
 		Vector3 vavoid = Vector3.zero;
@@ -107,7 +106,7 @@ public class Flock : MonoBehaviour {
         }
 		if(groupSize > 0)
         {
-			vcentre = vcentre / groupSize + (myManager.goalPos - this.transform.position);
+			vcentre = vcentre / groupSize + (myManager._GoalPos - this.transform.position);
 			speed = gSpeed / groupSize;
 
 			Vector3 direction = (vcentre + vavoid) - transform.position;
