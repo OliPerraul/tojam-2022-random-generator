@@ -14,8 +14,50 @@ namespace Tojam2022
 		public static readonly int FishFood = LayerMask.NameToLayer("FishFood");
 	}
 
+	public enum GameState
+	{ 
+		Menu,
+		Game,
+	}
 
-	public class Game : CustomMonoBehaviourBase
+	public class Game : SingletonComponentBase<Game>
 	{
+		private GameState _gameState;
+
+		public void SetState(CursorState state, params object[] args)
+		{
+			//switch (state)
+			//{
+			//	case CursorState.Default:
+			//		if (_tool != null)
+			//		{
+			//			_tool.SetState(ToolState.Shelved);
+			//		}
+			//		_tool = null;
+			//		_handMesh.SetActive(true);
+			//		break;
+			//	case CursorState.Tool:
+			//		_handMesh.SetActive(false);
+			//		break;
+			//}
+			//_cursorState = state;
+		}
+
+		public override void Awake()
+		{
+			DontDestroyOnLoad(gameObject);
+		}
+
+		public void Update()
+		{
+			switch (_gameState)
+			{
+				case GameState.Menu:
+					break;
+				case GameState.Game:
+					break;
+			}
+		}
+
 	}
 }
