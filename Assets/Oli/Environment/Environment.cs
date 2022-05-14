@@ -33,6 +33,7 @@ namespace Tojam2022
         {
             Physics.IgnoreCollision(_barrierCollider, Cursor.Instance.Collider);
             Physics.IgnoreCollision(_barrierCollider, _barrierTrigger);
+            Physics.IgnoreLayerCollision(Layers.Barrier, Layers.FishFood);
 
             _barrierTriggerEvents = _barrierTrigger.GetOrAddComponent<EventForwarderComponent>();
             _barrierTriggerEvents.OnTriggerExitEvent += _OnBarrierTriggerExit;

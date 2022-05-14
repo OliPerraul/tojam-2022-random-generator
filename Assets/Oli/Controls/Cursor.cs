@@ -43,11 +43,19 @@ namespace Tojam2022
 					break;
 
 				case CursorState.Tool:
-					if (Input.GetKeyDown(KeyCode.Escape))
+					if (Input.GetMouseButtonDown(1))
 					{
 						SetState(CursorState.Default);
 						break;
 					}
+					if (Input.GetMouseButtonDown(0))
+					{
+						//SetState(CursorState.Default);
+						_tool.Use();
+						break;
+					}
+
+
 					_tool.Transform.position = _transform.position;
 					break;
 			}

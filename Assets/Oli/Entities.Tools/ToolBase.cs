@@ -19,24 +19,36 @@ namespace Tojam2022
 
 
 	public class ToolBase : MonoBehaviour
-	{		
+	{
 		[SerializeField]
-		private Collider _cursorInteractionTrigger;
+		private float _cooldownTime = 2;
+
 
 		[SerializeField]
-		private EventForwarderComponent _cursorTriggerEvents;
+		private Timer _cooldownTimer;
+
+
+		[SerializeField]
+		protected Collider _cursorInteractionTrigger;
+
+		//[SerializeField]
+		protected EventForwarderComponent _cursorTriggerEvents;
 
 		[SerializeField]
 		public Transform Transform;
 
 		[SerializeField]
-		private ToolState _toolState;
+		protected ToolState _toolState;
 
-		[SerializeField]
-		private Vector3 _shelfPosition;
 
-		[SerializeField]
-		private Quaternion _shelfRotation;
+
+
+
+		//[SerializeField]
+		protected Vector3 _shelfPosition;
+
+		//[SerializeField]
+		protected Quaternion _shelfRotation;		
 
 		public void Awake()
 		{
@@ -44,7 +56,29 @@ namespace Tojam2022
 			_cursorTriggerEvents.OnTriggerStayEvent += _OnTriggerStay;
 			_shelfPosition = Transform.position;
 			_shelfRotation = Transform.rotation;
+
+			_cooldownTimer = new Timer(_OnCooldownTimeout);
 		}
+
+		private void _OnCooldownTimeout()
+		{ 
+		
+		}
+
+		public void Use()
+		{
+			if (!_cooldownTimer.IsActive)
+			{
+				_Use();
+				_cooldownTimer.Reset(_cooldownTime);
+			}
+		}
+
+		protected virtual void _Use()
+		{ 
+		
+		}
+
 
 		private void _OnTriggerStay(GameObject o, Collider other)
 		{
