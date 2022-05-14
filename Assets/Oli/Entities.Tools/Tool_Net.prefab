@@ -25,31 +25,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c108303f7d37104bbc67228099fb6f9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9372609
+      value: -0.5325802
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c108303f7d37104bbc67228099fb6f9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.14899488
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c108303f7d37104bbc67228099fb6f9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7120898
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c108303f7d37104bbc67228099fb6f9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.34862876
+      value: -0.43253565
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c108303f7d37104bbc67228099fb6f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 27.213
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c108303f7d37104bbc67228099fb6f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 266.226
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0c108303f7d37104bbc67228099fb6f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -40.807
+      value: 49.172
       objectReference: {fileID: 0}
     - target: {fileID: -2325082018695633755, guid: 0c108303f7d37104bbc67228099fb6f9, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -72,6 +72,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3471838277506317560, guid: ac8e2fe2a6273844a94b75659ddcbdaf, type: 3}
+      propertyPath: m_Size.x
+      value: 4.5150967
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471838277506317560, guid: ac8e2fe2a6273844a94b75659ddcbdaf, type: 3}
+      propertyPath: m_Center.x
+      value: 0.326828
+      objectReference: {fileID: 0}
     - target: {fileID: 5815688773114829167, guid: ac8e2fe2a6273844a94b75659ddcbdaf, type: 3}
       propertyPath: m_Name
       value: Tool_Net

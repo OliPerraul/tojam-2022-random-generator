@@ -31,14 +31,29 @@ namespace Tojam2022
 
 		//public float Speed = 1;
 
-		public Vector3 Velocity;
+		public Vector3 Velocity = Vector3.zero;
+
+		[SerializeField]
+		private Transform _transform;
 
 		[SerializeField]
 		private CharacterController _characterController;
 
+		public CharacterController CharacterController => CharacterController;
+
+
+		[SerializeField]
+		private Rigidbody _rigidbody;
+		public Rigidbody Rigidbody => _rigidbody;
+
 		public void Update()
 		{
 			_characterController.Move(Velocity * Time.deltaTime);
+		}
+
+		public void FixedUpdate()
+		{
+			
 		}
 	}
 }

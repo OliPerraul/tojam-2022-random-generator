@@ -35,7 +35,7 @@ namespace Tojam2022
 
 		public void Update()
 		{
-			_transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition).X_Z(_transform.position.y);
+			_transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition).XY_(_transform.position.z);
 
 			switch (_cursorState)
 			{

@@ -47,7 +47,7 @@ namespace Tojam2022
                 Vector3 exitDir = (cursor.Position - _barrierTrigger.transform.position).normalized;
 
                 // use dot prod to determine if entered or exit
-                if (Vector3.Dot(exitDir, _barrierTrigger.transform.forward) > 0)
+                if (Vector3.Dot(exitDir, _barrierTrigger.transform.up) < 0)
                 {
                     Debug.Log("Cursor Entered");
                     onCursorEnteredEvent?.Invoke();

@@ -39,7 +39,10 @@ namespace Tojam2022
 		private Transform _transform;
 
 		[SerializeField]
-		private NavMeshAgent _navmeshAgent;
+		public float _mass = 1;
+
+		//[SerializeField]
+		//private NavMeshAgent _navmeshAgent;
 
 		// Wandering
 
@@ -62,7 +65,8 @@ namespace Tojam2022
 
 		private AlienAiState _alienAiState;
 
-		private float WanderSpeed = 1.0f;
+		[SerializeField]
+		private float WanderSpeed = 10.0f;
 
 
 		private Timer _wanderTimer;
@@ -85,31 +89,32 @@ namespace Tojam2022
 		[Header("Follow")]
 		[SerializeField]
 		public float _followMaxForce = 0.6f;
-		public float _followMexSpeed = 100f;
+		[SerializeField]
+		public float _followMaxSpeed = 100f;
+		[SerializeField]
 		public float _followSlowingRadius = 200f;
-						
+		[SerializeField]
+		public float _followDistance = 2f;
 
 		public Vector3 _Seek(Vector3 target)
 		{
-			Vector3 force;
-			float distance;
 			float slowingRadius = _followSlowingRadius;
 
 			Vector3 desired = target - _transform.position;
 
-			distance = desired.magnitude;
+			float distance = desired.magnitude;
 			desired.Normalize();
 
 			if (distance <= slowingRadius)
 			{
-				desired = (_followMexSpeed * distance / slowingRadius) * desired;
+				desired = (_followMaxSpeed * distance / slowingRadius) * desired;
 			}
 			else
 			{
-				desired = _followMexSpeed * desired;
+				desired = _followMaxSpeed * desired;
 			}
 
-			force = desired - _alien.Velocity;
+			Vector3 force = desired - _alien.Velocity;
 			return force;
 		}
 
@@ -133,7 +138,7 @@ namespace Tojam2022
 					_wanderTimer.Stop();
 					break;
 				case AlienAiState.Idle:
-					_wanderTimer.Stop();
+					_idleTimer.Stop();
 					break;
 			}
 
@@ -189,12 +194,12 @@ namespace Tojam2022
 
 		public Vector3 _Truncate(Vector3 vector, float max)
 		{
-			var i = 0f;
+			var val = 0f;
 
-			i = max / vector.magnitude;
-			i = i< 1.0f ? i : 1.0f;
+			val = max / vector.magnitude;
+			val = val< 1.0f ? val : 1.0f;
 			
-			return vector = i * vector;
+			return vector = val * vector;
 		}
 
 
@@ -204,14 +209,26 @@ namespace Tojam2022
 			{
 				case AlienAiState.Following:
 
+					Vector3 follow = _followDistance * ((Cursor.Instance.Position - _transform.position).XY_()).normalized;
 
-					// Seek mouse cursor
-					Vector3 steering = _Seek(Cursor.Instance.Position.X_Z(_transform.position.y));
+					Vector3 arrival = Cursor.Instance.Position.XY_() - follow;
 
-					_Truncate(steering, _followMaxForce);
-					_alien.Velocity = steering;
-					
-					_Truncate(_alien.Velocity, _followMexSpeed);
+					if (_transform.position.Almost(arrival))
+					{
+						_alien.Velocity = Vector3.zero;
+					}
+					else
+					{
+						// Seek mouse cursor
+						Vector3 steering = _Seek(arrival);
+
+						steering = _Truncate(steering, _followMaxForce);
+
+						//steering = (1 / _mass) * steering;
+						_alien.Velocity = steering;
+
+						//steering = _Truncate(_alien.Velocity, _followMaxSpeed);
+					}					
 
 					break;
 
@@ -222,12 +239,12 @@ namespace Tojam2022
 
 				case AlienAiState.Wandering:
 
-					_wanderDirection = new Vector3(0, 0, -1) * _wanderCircleRadius;
+					_wanderDirection = new Vector3(0, -1, 0) * _wanderCircleRadius;
 					// Randomly change the vector direction by making it change its current angle Set angle..
 					_wanderDirection = new Vector3(
-						Mathf.Cos(_wanderAngle),
-						_wanderDirection.y,
-						Mathf.Sin(_wanderAngle))
+						Mathf.Cos(_wanderAngle),						
+						Mathf.Sin(_wanderAngle),
+						_wanderDirection.z)
 						.normalized;
 
 					_alien.Velocity = WanderSpeed * _wanderDirection;
