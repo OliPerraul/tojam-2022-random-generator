@@ -29,7 +29,9 @@ namespace Tojam2022
 		{
 			AlienArtifactBase prefab = _artifacts.Choice(_artifacts.Select(x => x.Chance));
 			Vector3 discoveryPosition = _discoveryZoneBounds.RandomPosition().XY_(0);
-			prefab.Instantiate(discoveryPosition);			
+			prefab.Instantiate(discoveryPosition);
+
+			_artifactDiscoveredTimer.Reset(_artifactDiscoveredTime.Random());
 		}
 
 		public override void Awake()
@@ -40,7 +42,7 @@ namespace Tojam2022
 			_discoveryZoneBounds = _discoveryZoneMesh.bounds;
 			_discoveryZoneMesh.gameObject.SetActive(false);
 
-			_artifactDiscoveredTimer = new Timer(_OnArtifactDiscoveredTimeout, true);	
+			_artifactDiscoveredTimer = new Timer(_OnArtifactDiscoveredTimeout);	
 
 		}
 
