@@ -30,8 +30,8 @@ namespace Tojam2022
         [SerializeField]
         private ShopUiItem _shopItemPrefab;
 
-        //[SerializeField]
-        //private ShopI
+        public Action<Deco> OnShopItemBoughtEvent;
+       
 
 		public override void Awake()
 		{
@@ -47,8 +47,19 @@ namespace Tojam2022
                 var shopItem = _shopItemPrefab.Instantiate(_shopItemTransform);
                 shopItem.Name = deco.Name;
                 shopItem.Price = deco.Price;
+                shopItem.Deco = deco;
+                shopItem.ShopItemBoughtEvent += _OnShopItemBought;
             }
 		}
+
+        private void _OnShopItemBought(ShopUiItem item)
+        {
+            if (Alien.Instance.Money > item.Deco.Price)
+            {
+                Alien.Instance.Money -= item.Deco.Price;
+                OnShopItemBoughtEvent?.Invoke(item.Deco);
+            }
+        }
 
 		public void _OnShopButtonClicked()
         {

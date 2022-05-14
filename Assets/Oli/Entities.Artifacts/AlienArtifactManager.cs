@@ -17,7 +17,7 @@ namespace Tojam2022
 		private Range_ _artifactDiscoveredTime = new Range_(1, 10);
 
 		[SerializeField]
-		private List<AlienArtifactBase> _artifacts;
+		private List<AlienArtifact> _artifacts;
 
 		[SerializeField]
 		private Renderer _discoveryZoneMesh;
@@ -27,7 +27,7 @@ namespace Tojam2022
 
 		private void _OnArtifactDiscoveredTimeout()
 		{
-			AlienArtifactBase prefab = _artifacts.Choice(_artifacts.Select(x => x.Chance));
+			AlienArtifact prefab = _artifacts.Choice(_artifacts.Select(x => x.Chance));
 			Vector3 discoveryPosition = _discoveryZoneBounds.RandomPosition().XY_(0);
 			prefab.Instantiate(discoveryPosition);
 

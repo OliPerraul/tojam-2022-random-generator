@@ -142,6 +142,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac8e2fe2a6273844a94b75659ddcbdaf, type: 3}
+--- !u!65 &98134370147959633 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 3407241080509246688, guid: ac8e2fe2a6273844a94b75659ddcbdaf, type: 3}
+  m_PrefabInstance: {fileID: 3320374505526931377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!65 &2178094608375616329 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 3471838277506317560, guid: ac8e2fe2a6273844a94b75659ddcbdaf, type: 3}
@@ -174,9 +179,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9f360f015416d489db1fe17a279e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cooldownTime: 2
+  _cooldownTimer:
+    _repeat: 0
+    _limit: 0
+    _time: 0
+    _isFixedUpdate: 0
+    Increment: 0
   _cursorInteractionTrigger: {fileID: 2178094608375616329}
-  _cursorTriggerEvents: {fileID: 0}
   Transform: {fileID: 7822022518948303933}
   _toolState: 0
-  _shelfPosition: {x: 0, y: 0, z: 0}
-  _shelfRotation: {x: 0, y: 0, z: 0, w: 0}
+  _actionTrigger: {fileID: 98134370147959633}

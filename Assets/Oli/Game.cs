@@ -29,7 +29,7 @@ namespace Tojam2022
 	public class Game : SingletonComponentBase<Game>
 	{
 		private GameState _gameState;
-
+		public GameState State => _gameState;
 
 		//private RandomizationAssetBase
 

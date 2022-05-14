@@ -16,6 +16,9 @@ namespace Tojam2022
 	public class AlienStatsUi : SingletonComponentBase<AlienStatsUi>
 	{
 		[SerializeField]
+		private AlienStatUiItem _moneyStat;
+
+		[SerializeField]
 		private AlienStatUiItem _hungerStat;
 
 		[SerializeField]
@@ -33,9 +36,12 @@ namespace Tojam2022
 
 		public void Update()
 		{
+
+
 			if (Alien.Instance.State == AlienState.Game)
 			{
 				_hungerStat.Value = Alien.Instance.Hunger;
+				_moneyStat.Value = Alien.Instance.Money;
 			}
 		}
 	}

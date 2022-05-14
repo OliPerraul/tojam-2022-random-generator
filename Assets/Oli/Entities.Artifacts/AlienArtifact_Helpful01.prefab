@@ -53,25 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5253298325803758055, guid: 4739d331f0c82ca40a5bb1829f71a306, type: 3}
       propertyPath: m_Name
-      value: AlienArtifact_Sale
+      value: AlienArtifact_FishFood
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4739d331f0c82ca40a5bb1829f71a306, type: 3}
---- !u!1 &7016116237281835627 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5253298325803758055, guid: 4739d331f0c82ca40a5bb1829f71a306, type: 3}
-  m_PrefabInstance: {fileID: 3006494106590858124}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &-6625554227858741060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7016116237281835627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19a2d4e896f00fe4ab76d294a2bf38dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Chance: 0.5

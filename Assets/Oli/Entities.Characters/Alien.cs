@@ -24,6 +24,9 @@ namespace Tojam2022
 	public class Alien : SingletonComponentBase<Alien>
 	{
 		[SerializeField]
+		public float Money = 0;
+
+		[SerializeField]
 		public float _maxDamageTime = 10;
 
 		private Timer _damageTimer;

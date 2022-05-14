@@ -40,15 +40,19 @@ namespace Tojam2022
 		[SerializeField]
 		protected ToolState _toolState;
 
-
-
-
+		//[SerializeField]
+		//protected Collider _actionTrigger;
 
 		//[SerializeField]
 		protected Vector3 _shelfPosition;
 
 		//[SerializeField]
-		protected Quaternion _shelfRotation;		
+		protected Quaternion _shelfRotation;
+
+
+		[SerializeField]
+		protected float _actionRange = 10;
+
 
 		public void Awake()
 		{
@@ -61,14 +65,17 @@ namespace Tojam2022
 		}
 
 		private void _OnCooldownTimeout()
-		{ 
-		
+		{
+			//_actionTrigger.gameObject.SetActive(false);
 		}
 
 		public void Use()
 		{
 			if (!_cooldownTimer.IsActive)
 			{
+				
+				Physics.OverlapSphere(Transform.position, _actionRange);
+
 				_Use();
 				_cooldownTimer.Reset(_cooldownTime);
 			}

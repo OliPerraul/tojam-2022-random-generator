@@ -11,5 +11,9 @@ namespace Tojam2022
 {
 	public class NetTool : ToolBase
 	{
+		protected override void _Use()
+		{
+			base._Use();
+		}
 	}
 }

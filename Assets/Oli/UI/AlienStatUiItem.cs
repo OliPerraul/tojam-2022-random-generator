@@ -15,6 +15,12 @@ using Cirrus.Unity.Objects;
 
 namespace Tojam2022
 {
+	public enum AlienStatType
+	{
+		Default,
+		Money,		
+	}
+
 	public class AlienStatUiItem : CustomMonoBehaviourBase
 	{
 		[SerializeField]
@@ -22,14 +28,26 @@ namespace Tojam2022
 
 		private float _value;
 
+		[SerializeField]
+		private AlienStatType _type;
+
 		public float Value
 		{
 			get => _value;
 			set
 			{
 				_value = value;
-				//_valueText.text = $"{_value.ToString("0.00")} $";
-				_valueText.text = String.Format("{0:P0}.", _value);
+				switch (_type)
+				{
+					case AlienStatType.Default:
+					//_valueText.text = $"{_value.ToString("0.00")} $";
+					_valueText.text = String.Format("{0:P0}.", _value);
+					break;
+					case AlienStatType.Money:
+					_valueText.text = $"{_value.ToString("0.00")} $";
+					//_valueText.text = String.Format("{0:P0}.", _value);
+					break;
+				}
 			}
 		}
 

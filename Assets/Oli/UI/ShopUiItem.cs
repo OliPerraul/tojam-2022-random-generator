@@ -37,14 +37,27 @@ namespace Tojam2022
 		}
 
 		[SerializeField]
+		public Deco Deco;
+
+		[SerializeField]
 		private TextMeshProUGUI _nameText;
 
 		[SerializeField]
 		private TextMeshProUGUI _priceText;
 
+		[SerializeField]
+		private Button _button;
+
+		public Action<ShopUiItem> ShopItemBoughtEvent;
+
 		public void Awake()
 		{
-			
+			_button.onClick.AddListener(_OnButtonClicked);
+		}
+
+		public void _OnButtonClicked()
+		{
+			ShopItemBoughtEvent?.Invoke(this);
 		}
 	}
 }
