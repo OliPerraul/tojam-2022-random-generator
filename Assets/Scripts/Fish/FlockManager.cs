@@ -20,10 +20,21 @@ namespace Tojam2022
 			get { return _swimLimits; }
 		}
 
+
 		[SerializeField] Vector3 _goalPos;
 		public Vector3 _GoalPos
 		{
 			get { return _goalPos; }
+		}
+		[SerializeField] float arrivedAtGoalDistance = 4;
+
+        [SerializeField] float flockSpeed = 5;
+
+
+		[SerializeField] bool _goingToGoal;
+		public bool _GoingToGoal
+		{
+			get { return _goingToGoal; }
 		}
 
 		[Header("Fish Settings")]
@@ -37,6 +48,7 @@ namespace Tojam2022
 		public float rotationSpeed;
 
 		List<Food> currentFoodPositions = new List<Food>();
+
 
 
 		// Use this for initialization
@@ -53,29 +65,41 @@ namespace Tojam2022
 				_allFish[i].GetComponent<Flock>().myManager = this;
 				_allFish[i].GetComponent<FishCollision>().myManager = this;
 			}
-			_goalPos = this.transform.position;
+			//_goalPos = this.transform.position;
 
 			FishFoodContainer.addNewFood += UpdateFoodGoalLocation;
 			FishFoodContainer.updateFishFood += UpdateFoodList;
 
+			StartCoroutine(MoveTowardGoal());
+
 		}
 
 
-
-		// Update is called once per frame
-		void Update()
+		IEnumerator MoveTowardGoal()
 		{
-			//if (Random.Range(0, 100) < 10)
-			//{
-			//	goalPos = this.transform.position + new Vector3(Random.Range(-swimLimits.x, swimLimits.x),
-			//															Random.Range(-swimLimits.y, swimLimits.y),
-			//															Random.Range(-swimLimits.z, swimLimits.z));
-			//}
+			while (true)
+			{
+				//Debug.LogWarning("Move to goal2");
+				
+
+				_goalPos = this.transform.position + new Vector3(Random.Range(-_swimLimits.x, _swimLimits.x),
+																		   Random.Range(-_swimLimits.y, _swimLimits.y),
+																   Random.Range(-_swimLimits.z, _swimLimits.z));
+				yield return new WaitForSeconds(5);
+			}
 		}
+
+
 
 		void UpdateFoodGoalLocation(Food newFood)
 		{
 			currentFoodPositions.Add(newFood);
+
+			_goalPos = this.transform.position + new Vector3(Random.Range(-_swimLimits.x, _swimLimits.x),
+																		   Random.Range(-_swimLimits.y, _swimLimits.y),
+																   Random.Range(-_swimLimits.z, _swimLimits.z));
+			transform.position = newFood.transform.position;
+
 		}
 
 		void UpdateFoodList(Food eatenFood)
@@ -83,6 +107,23 @@ namespace Tojam2022
 			currentFoodPositions.Remove(eatenFood);
 		}
 
-
+		//IEnumerator MoveTowardGoal()
+  //      {
+		//	bool fishHaveMoved = true;
+			
+		//	foreach(GameObject fish in _allFish)
+  //          {
+		//		if (Vector3.Distance(fish.transform.position, _goalPos) >= arrivedAtGoalDistance)
+  //              {
+		//			fish.transform.position += (_goalPos - fish.transform.position).normalized * Time.deltaTime * flockSpeed;
+		//			fishHaveMoved = false;
+		//		}
+  //          }
+		//	Debug.LogWarning("Moving");
+		//	while (!fishHaveMoved)
+  //          {
+		//		yield return null;
+  //          }
+		//}
 	}
 }
