@@ -27,16 +27,18 @@ namespace Tojam2022
 		[SerializeField]
 		public float Sleepiness;
 		
-		public Vector3 Direction;
+		//public Vector3 Direction;
 
-		public float Speed = 1;
+		//public float Speed = 1;
+
+		public Vector3 Velocity;
 
 		[SerializeField]
 		private CharacterController _characterController;
 
 		public void Update()
 		{
-			_characterController.Move(Speed * Direction * Time.deltaTime);
+			_characterController.Move(Velocity * Time.deltaTime);
 		}
 	}
 }

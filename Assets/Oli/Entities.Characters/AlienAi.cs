@@ -25,6 +25,7 @@ namespace Tojam2022
 		Wandering,
 		Idle,
 		Following,
+		Scared,
 		Asleep,
 		Angry,		
 	}
@@ -42,6 +43,7 @@ namespace Tojam2022
 
 		// Wandering
 
+		[Header("Wander")]
 		[SerializeField]
 		private Vector3 _wanderDirection;
 
@@ -63,18 +65,84 @@ namespace Tojam2022
 		private float WanderSpeed = 1.0f;
 
 
-		private void _OnCursorEntered()
+		private Timer _wanderTimer;
+
+		[SerializeField]
+		private Range_ _wanderTime = new Range_(1, 2);
+
+
+		// Idle
+
+		[Header("Idle")]
+		[SerializeField]
+		private Range_ _idleTime = new Range_(1, 2);
+
+		private Timer _idleTimer;
+
+
+		// Follow
+
+		[Header("Follow")]
+		[SerializeField]
+		public float _followMaxForce = 0.6f;
+		public float _followMexSpeed = 100f;
+		public float _followSlowingRadius = 200f;
+						
+
+		public Vector3 _Seek(Vector3 target)
 		{
-			//_blackboard.Set(AlienAiState.Following);
+			Vector3 force;
+			float distance;
+			float slowingRadius = _followSlowingRadius;
+
+			Vector3 desired = target - _transform.position;
+
+			distance = desired.magnitude;
+			desired.Normalize();
+
+			if (distance <= slowingRadius)
+			{
+				desired = (_followMexSpeed * distance / slowingRadius) * desired;
+			}
+			else
+			{
+				desired = _followMexSpeed * desired;
+			}
+
+			force = desired - _alien.Velocity;
+			return force;
 		}
 
 
+		private void _OnCursorEntered()
+		{
+			SetState(AlienAiState.Following);
+		}
+
+		private void _OnCursorExited()
+		{
+			SetState(AlienAiState.Wandering);
+		}
+
 		public void SetState(AlienAiState state, params object[] args)
 		{
+			// exit state
+			switch (_alienAiState)
+			{
+				case AlienAiState.Wandering:
+					_wanderTimer.Stop();
+					break;
+				case AlienAiState.Idle:
+					_wanderTimer.Stop();
+					break;
+			}
+
+			// enter state
 			switch (state)
 			{
 				case AlienAiState.Wandering:
-					_alien.Speed = WanderSpeed;
+					//_alien.Velocity = WanderSpeed;
+					_wanderTimer.Reset(_wanderTime.Random());
 					//if (_tool != null)
 					//{
 					//	_tool.SetState(ToolState.Shelved);
@@ -83,7 +151,8 @@ namespace Tojam2022
 					//_handMesh.SetActive(true);
 					break;
 				case AlienAiState.Idle:
-					_alien.Speed = 0.0f;
+					_alien.Velocity = Vector3.zero;
+					_idleTimer.Reset(_idleTime.Random());
 					break;
 
 				case AlienAiState.Following:
@@ -96,20 +165,53 @@ namespace Tojam2022
 
 		public override void Awake()
 		{
-
 			Environment.Instance.onCursorEnteredEvent += _OnCursorEntered;
+			Environment.Instance.onCursorExitedEvent += _OnCursorExited;
+			_wanderTimer = new Timer(_OnWanderTimeout);
+			_idleTimer = new Timer(_OnIdleTimeout);
 		}
+
+		private void _OnWanderTimeout()
+		{
+			SetState(AlienAiState.Idle);
+		}
+
+		private void _OnIdleTimeout()
+		{
+			SetState(AlienAiState.Wandering);
+		}
+
 
 		public override void Start()
 		{
 			SetState(AlienAiState.Wandering);
 		}
 
+		public Vector3 _Truncate(Vector3 vector, float max)
+		{
+			var i = 0f;
+
+			i = max / vector.magnitude;
+			i = i< 1.0f ? i : 1.0f;
+			
+			return vector = i * vector;
+		}
+
+
 		public void Update()
 		{
 			switch (_alienAiState)
 			{
 				case AlienAiState.Following:
+
+
+					// Seek mouse cursor
+					Vector3 steering = _Seek(Cursor.Instance.Position.X_Z(_transform.position.y));
+
+					_Truncate(steering, _followMaxForce);
+					_alien.Velocity = steering;
+					
+					_Truncate(_alien.Velocity, _followMexSpeed);
 
 					break;
 
@@ -128,7 +230,7 @@ namespace Tojam2022
 						Mathf.Sin(_wanderAngle))
 						.normalized;
 
-					_alien.Direction = _wanderDirection;
+					_alien.Velocity = WanderSpeed * _wanderDirection;
 
 					// Change wanderAngle just a bit, so it won't have the same value in the next game frame.
 					_wanderAngle += (Random.value * _wanderAngleChange) - (_wanderAngleChange * .5f);
