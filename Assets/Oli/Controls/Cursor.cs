@@ -69,6 +69,7 @@ namespace Tojam2022
 				{
 					_tool.SetState(ToolState.Active);
 				}
+
 				_tool = tool;
 
 				if (_tool != null)

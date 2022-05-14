@@ -20,15 +20,15 @@ namespace Tojam2022
 
         [SerializeField] List<Food> foods = new List<Food>();
 
-        private void Start()
+        public void Start()
         {
             foreach (Food f in foods)
             {
+                if (f == null) continue;
                 f._FishFoodContainer = this;
             }
             //StartCoroutine(TestFishFoodContainer());
         }
-
 
         //IEnumerator TestFishFoodContainer()
         //{
@@ -45,8 +45,8 @@ namespace Tojam2022
             if (foods.Count > 0)
             {
                 foods[foods.Count - 1].gameObject.SetActive(true);
-                foods[foods.Count - 1].DropFoodAtDestination(transform.position,
-                    new Vector3(transform.position.x, Random.Range(minDropDestinationY, maxDropDestinationY), transform.position.z));
+                foods[foods.Count - 1].DropFoodAtDestination(Transform.position,
+                    new Vector3(Transform.position.x, Random.Range(minDropDestinationY, maxDropDestinationY), Transform.position.z));
                 addNewFood?.Invoke(foods[foods.Count - 1]);
                 foods.RemoveAt(foods.Count - 1);
             }

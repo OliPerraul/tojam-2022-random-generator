@@ -15,17 +15,51 @@ using Cirrus.Unity.Objects;
 
 namespace Tojam2022
 {
-	public class Alien : CustomMonoBehaviourBase
+	public enum AlienState
+	{
+		None,
+		Game
+	}
+
+	public class Alien : SingletonComponentBase<Alien>
 	{
 		[SerializeField]
-		public float Health;
+		public float Money = 0;
 
 		[SerializeField]
-		public float Hunger;
+		public float _maxDamageTime = 10;
+
+		private Timer _damageTimer;
+
+		public float Damage => _damageTimer.Time / _maxDamageTime;
 
 		[SerializeField]
-		public float Sleepiness;
-		
+		public float _maxHungerTime = 10;
+
+		private Timer _hungerTimer;
+
+		public float Hunger => _hungerTimer.Time / _maxHungerTime;
+
+		[SerializeField]
+		public float _maxSleepinessTime = 10;
+
+		private Timer _sleepinessTimer;
+
+		public float Sleepiness => _sleepinessTimer.Time / _maxSleepinessTime;
+
+
+		[SerializeField]
+		public float _maxAngerTime = 10;
+
+		private Timer _angerTimer;
+
+		public float Anger => _angerTimer.Time / _maxHungerTime;
+
+
+		private AlienState _alienState;
+
+		public AlienState State => _alienState;
+
 		//public Vector3 Direction;
 
 		//public float Speed = 1;
@@ -40,10 +74,38 @@ namespace Tojam2022
 
 		public CharacterController CharacterController => CharacterController;
 
-
 		[SerializeField]
 		private Rigidbody _rigidbody;
 		public Rigidbody Rigidbody => _rigidbody;
+
+		public Action onAlienDiedHandler;
+
+		public override void Awake()
+		{
+			_damageTimer = new Timer(_DamageTimeout);
+			_hungerTimer = new Timer(_HungerTimeout);
+			_sleepinessTimer = new Timer(_SleepinessTimeout);
+			_angerTimer = new Timer(_AngerTimeout);
+		}
+
+
+		private void _AngerTimeout()
+		{
+		}
+
+		private void _SleepinessTimeout()
+		{
+		}
+
+		private void _HungerTimeout()
+		{
+			onAlienDiedHandler?.Invoke();
+		}
+
+		private void _DamageTimeout()
+		{
+		}
+
 
 		public void Update()
 		{
@@ -52,7 +114,33 @@ namespace Tojam2022
 
 		public void FixedUpdate()
 		{
-			
+
+		}
+
+		public void SetState(AlienState state, params object[] args)
+		{
+			switch (_alienState)
+			{
+				case AlienState.None:
+					break;
+
+				case AlienState.Game:
+					break;
+			}
+
+			switch (state)
+			{
+				case AlienState.None:
+					break;
+				case AlienState.Game:
+					_damageTimer.Reset(_maxDamageTime);
+					_hungerTimer.Reset(_maxHungerTime);
+					_sleepinessTimer.Reset(_maxSleepinessTime);
+					_angerTimer.Reset(_maxAngerTime);
+					break;
+
+			}
+			_alienState = state;
 		}
 	}
 }
