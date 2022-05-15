@@ -7,16 +7,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Cirrus.Events;
+using System.Linq;
 
 namespace Tojam2022
 {
-
 	public enum ToolState
 	{
 		Shelved,
 		Active
 	}
-
 
 	public class ToolBase : MonoBehaviour
 	{
@@ -74,14 +73,18 @@ namespace Tojam2022
 			if (!_cooldownTimer.IsActive)
 			{
 				
-				Physics.OverlapSphere(Transform.position, _actionRange);
+				Collider[] colliders = Physics.OverlapSphere(Transform.position, _actionRange);
 
-				_Use();
+				IEnumerable<EntityBase> ents = colliders
+				.Select(x => x.GetComponentInParent<EntityBase>())
+				.Where(x => x != null);
+
+				_Use(ents);
 				_cooldownTimer.Reset(_cooldownTime);
 			}
 		}
 
-		protected virtual void _Use()
+		protected virtual void _Use(IEnumerable<EntityBase> entities)
 		{ 
 		
 		}

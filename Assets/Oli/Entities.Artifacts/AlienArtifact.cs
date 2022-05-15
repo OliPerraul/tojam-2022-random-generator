@@ -21,6 +21,18 @@ namespace Tojam2022
 
         [SerializeField]
         public ArtifactType Type = ArtifactType.Valuable;
-    }
+
+		public override void Capture(ToolBase context)
+		{
+            switch (Type)
+            {
+                case ArtifactType.Harmful:
+                    break;
+
+                case ArtifactType.Valuable:
+                    break;
+            }
+		}
+	}
     
 }

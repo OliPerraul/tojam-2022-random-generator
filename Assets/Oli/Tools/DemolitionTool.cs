@@ -11,7 +11,7 @@ namespace Tojam2022
 {
 	public class DemolitionTool : ToolBase
 	{
-		protected override void _Use()
+		protected override void _Use(IEnumerable<EntityBase> entities)
 		{
 			
 		}

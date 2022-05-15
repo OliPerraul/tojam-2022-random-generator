@@ -6,5 +6,8 @@ namespace Tojam2022
 {
 	public class EntityBase : MonoBehaviour
 	{
+		public virtual void Capture(ToolBase context)
+		{
+		}
 	}
 }

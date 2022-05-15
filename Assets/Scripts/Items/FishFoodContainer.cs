@@ -39,7 +39,7 @@ namespace Tojam2022
         //    }
         //}
 
-        protected override void _Use()
+        protected override void _Use(IEnumerable<EntityBase> ents)
         {
             Debug.LogWarning("Use Food");
             if (foods.Count > 0)
