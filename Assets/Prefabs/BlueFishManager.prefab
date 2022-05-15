@@ -47,9 +47,13 @@ MonoBehaviour:
   fishPrefab: {fileID: 8285139589519426261, guid: 59abfb414921ff24fbdf12643b0ae535, type: 3}
   numFish: 5
   _allFish: []
-  _swimLimits: {x: 5, y: 5, z: 5}
+  _swimLimits: {x: 5, y: 5, z: 2}
+  _swimLimitsRange: {x: 5, y: 5, z: 5}
   _goalPos: {x: 0, y: 0, z: 0}
+  arrivedAtGoalDistance: 4
+  flockSpeed: 5
+  _goingToGoal: 0
   minSpeed: 1.67
   maxSpeed: 3.33
-  neighbourDistance: 4
-  rotationSpeed: 3
+  neighbourDistance: 1.47
+  rotationSpeed: 0.93

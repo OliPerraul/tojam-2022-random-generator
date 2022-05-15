@@ -41,6 +41,7 @@ namespace Tojam2022
             else
             {
                 _fishFoodContainer.UpdateFishFoodList(this);
+                
             }
 
         }
@@ -55,20 +56,21 @@ namespace Tojam2022
 
         IEnumerator MoveToDestination()
         {
-            while (Vector3.Distance(transform.position, _destination) > 1.0f)
+
+            while (Vector3.Distance(transform.position, _destination) > .5f)
             {
-                Vector3.MoveTowards(transform.position, _destination, dropSpeed);
                 yield return null;
             }
+            Debug.LogWarning("Move to destination");
             rb.useGravity = false;
-            yield return null;
         }
 
         private void OnTriggerEnter(Collider collision)
         {
             if (collision.tag == "Water")
             {
-                rb.drag = 10;
+                rb.useGravity = true;
+                rb.drag = 5;
             }
         }
 
