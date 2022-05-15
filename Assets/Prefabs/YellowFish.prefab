@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2490373349267726589}
   - component: {fileID: -6617947523383032612}
   - component: {fileID: -6871714309539426020}
+  - component: {fileID: -3492291686907363894}
   m_Layer: 0
   m_Name: YellowFish
   m_TagString: Untagged
@@ -125,3 +126,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myManager: {fileID: 0}
+  fish: {fileID: -3492291686907363894}
+--- !u!114 &-3492291686907363894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285139589519426261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deefb62cf7a11324dafa76174b8974ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _food: 20

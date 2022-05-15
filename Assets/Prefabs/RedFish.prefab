@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2490373349267726589}
   - component: {fileID: 8253418723714402577}
   - component: {fileID: -402150195664745713}
+  - component: {fileID: 5899300234774122112}
   m_Layer: 0
   m_Name: RedFish
   m_TagString: Untagged
@@ -125,3 +126,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myManager: {fileID: 0}
+  fish: {fileID: 5899300234774122112}
+--- !u!114 &5899300234774122112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8285139589519426261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deefb62cf7a11324dafa76174b8974ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _food: 20
