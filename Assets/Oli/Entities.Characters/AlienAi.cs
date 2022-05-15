@@ -26,8 +26,11 @@ namespace Tojam2022
 		Following,
 		Scared,
 		Asleep,
-		Angry,		
+		Angry,
+		Attack
 	}
+
+	// TODO make timer go faster
 
 	public partial class AlienAi :  CustomMonoBehaviourBase
 	{
@@ -39,6 +42,7 @@ namespace Tojam2022
 
 		[SerializeField]
 		public float _mass = 1;
+
 
 		//[SerializeField]
 		//private NavMeshAgent _navmeshAgent;
@@ -81,6 +85,15 @@ namespace Tojam2022
 		private Range_ _idleTime = new Range_(1, 2);
 
 		private Timer _idleTimer;
+
+
+		// Anger
+
+		[Header("Anger")]
+		[SerializeField]
+		private Range_ _angerTime = new Range_(1, 2);
+
+		private Timer _angerTimer;
 
 
 		// Follow
@@ -154,6 +167,9 @@ namespace Tojam2022
 					//_tool = null;
 					//_handMesh.SetActive(true);
 					break;
+
+				case AlienAiState.Angry:
+
 				case AlienAiState.Idle:
 					_alien.Velocity = Vector3.zero;
 					_idleTimer.Reset(_idleTime.Random());
@@ -231,8 +247,9 @@ namespace Tojam2022
 
 					break;
 
-				case AlienAiState.Idle:
-
+				case AlienAiState.Attack:
+					// TODO:
+					//Alien.Instance.Animator.SetTrigger("Trigger_Attack");
 					break;
 
 

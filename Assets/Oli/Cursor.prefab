@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7313569731847435591}
   - component: {fileID: 7313569731847435592}
+  - component: {fileID: 1186915330673999041}
   m_Layer: 0
   m_Name: Cursor
   m_TagString: Untagged
@@ -132,6 +133,20 @@ MonoBehaviour:
   _handMesh: {fileID: 7313569732370239191}
   _transform: {fileID: 7313569732764923877}
   _tool: {fileID: 0}
+--- !u!114 &1186915330673999041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7313569731847435593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26f2d830e6e957042bc584c8425a02fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Money: 0
+  Health: 1
 --- !u!1 &7313569732370239191
 GameObject:
   m_ObjectHideFlags: 0

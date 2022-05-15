@@ -54,9 +54,9 @@ namespace Tojam2022
 
         private void _OnShopItemBought(ShopUiItem item)
         {
-            if (Alien.Instance.Money > item.Deco.Price)
+            if (Player.Instance.Money > item.Deco.Price)
             {
-                Alien.Instance.Money -= item.Deco.Price;
+                Player.Instance.Money -= item.Deco.Price;
                 OnShopItemBoughtEvent?.Invoke(item.Deco);
             }
         }
