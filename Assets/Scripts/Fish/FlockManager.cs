@@ -51,8 +51,6 @@ namespace Tojam2022
 
 		List<Food> currentFoodPositions = new List<Food>();
 
-
-
 		// Use this for initialization
 		void Start()
 		{
@@ -67,15 +65,13 @@ namespace Tojam2022
 				_allFish[i].GetComponent<Flock>().myManager = this;
 				_allFish[i].GetComponent<FishCollision>().myManager = this;
 			}
-			//_goalPos = this.transform.position;
+			_goalPos = this.transform.position;
 
 			FishFoodContainer.addNewFood += UpdateFoodGoalLocation;
 			FishFoodContainer.updateFishFood += UpdateFoodList;
 
 			StartCoroutine(MoveTowardGoal());
-
 		}
-
 
 		IEnumerator MoveTowardGoal()
 		{
@@ -83,11 +79,13 @@ namespace Tojam2022
 			{
 				//Debug.LogWarning("Move to goal2");
 
-				_swimLimits.x = Random.Range(-_swimLimitsRange.x, _swimLimitsRange.x);
-				_swimLimits.y = Random.Range(-_swimLimitsRange.y, _swimLimitsRange.y);
-				_swimLimits.z = Random.Range(-_swimLimitsRange.z, _swimLimitsRange.z);
-
-				_goalPos = this.transform.position + new Vector3(_swimLimits.x, _swimLimits.y, _swimLimits.z);
+				//_swimLimits.x = Random.Range(-_swimLimitsRange.x, _swimLimitsRange.x);
+				//_swimLimits.y = Random.Range(-_swimLimitsRange.y, _swimLimitsRange.y);
+				//_swimLimits.z = Random.Range(-_swimLimitsRange.z, _swimLimitsRange.z);
+			    transform.position = new Vector3( Random.Range(-_swimLimits.x, _swimLimits.x),
+												 Random.Range(-_swimLimits.y, _swimLimits.y),
+												 Random.Range(-_swimLimits.z, _swimLimits.z));
+				_goalPos =  /*this.transform.position + new Vector3(_swimLimits.x, _swimLimits.y, _swimLimits.z);*/
 
 				transform.position = _goalPos;
 				Debug.LogWarning("move towards");

@@ -16,9 +16,6 @@ namespace Tojam2022
 		bool turning = false;
 		Animator anim;
 
-		
-        
-
         // Use this for initialization
         void Start()
 		{
@@ -26,61 +23,55 @@ namespace Tojam2022
 			//anim = gameObject.GetComponent<Animator>();
 			//anim.SetFloat("cycleOffset", Random.Range(0.0f, 1.0f));
 			//anim.SetFloat("speedMult", speed);
-
-
 		}
 
 		// Update is called once per frame
 		void Update()
 		{
-			
-				//determine the bounding box of the manager cube
-				Bounds b = new Bounds(myManager.transform.position, myManager._SwimLimits * 2);
-				// if fish is outside the bounds of the cube or about to hit something
-				// then start turning around
-				RaycastHit hit = new RaycastHit();
+			//determine the bounding box of the manager cube
+			Bounds b = new Bounds(myManager.transform.position, myManager._SwimLimits * 2);
+			// if fish is outside the bounds of the cube or about to hit something
+			// then start turning around
+			RaycastHit hit = new RaycastHit();
 
-				//turn towards the centre of the manager cube
-				Vector3 direction = Vector3.zero;
+			//turn towards the centre of the manager cube
+			Vector3 direction = Vector3.zero;
 
 
-				if (!b.Contains(transform.position))
+			if (!b.Contains(transform.position))
+			{
+				turning = true;
+				direction = myManager.transform.position - transform.position;
+			}
+			else if (Physics.Raycast(transform.position, this.transform.forward * 50, out hit))
+			{
+				turning = true;
+				direction = Vector3.Reflect(this.transform.forward, hit.normal);
+			}
+			else
+			{
+				turning = false;
+			}
+
+			if (turning)
+			{
+				transform.rotation = Quaternion.Slerp(transform.rotation,
+										Quaternion.LookRotation(direction),
+										myManager.rotationSpeed * Time.deltaTime);
+			}
+			else
+			{
+				if (Random.Range(0, 100) < 10)
 				{
-					turning = true;
-					direction = myManager.transform.position - transform.position;
-
+					speed = Random.Range(myManager.minSpeed, myManager.maxSpeed);
 				}
-				else if (Physics.Raycast(transform.position, this.transform.forward * 50, out hit))
+				if (Random.Range(0, 100) < 20)
 				{
-					turning = true;
-					direction = Vector3.Reflect(this.transform.forward, hit.normal);
+					ApplyRules();
 				}
-				else
-				{
-					turning = false;
-				}
-
-				if (turning)
-				{
-					transform.rotation = Quaternion.Slerp(transform.rotation,
-											Quaternion.LookRotation(direction),
-											myManager.rotationSpeed * Time.deltaTime);
-				}
-				else
-				{
-
-					if (Random.Range(0, 100) < 10)
-					{
-						speed = Random.Range(myManager.minSpeed, myManager.maxSpeed);
-					}
-					if (Random.Range(0, 100) < 20)
-					{
-						ApplyRules();
-					}
-					//anim.SetFloat("speedMult", speed);
-				}
-				transform.Translate(0, 0, Time.deltaTime * speed);
-			
+				//anim.SetFloat("speedMult", speed);
+			}
+			transform.Translate(0, 0, Time.deltaTime * speed);
 		}
 
 		void ApplyRules()
