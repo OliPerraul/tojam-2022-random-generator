@@ -22,9 +22,8 @@ namespace Tojam2022
 	}
 
 	public class Alien : SingletonComponentBase<Alien>
-	{
-		[SerializeField]
-		public float Money = 0;
+	{		
+		// Alien stats
 
 		[SerializeField]
 		public float _maxDamageTime = 10;
@@ -52,6 +51,11 @@ namespace Tojam2022
 		public float _maxAngerTime = 10;
 
 		private Timer _angerTimer;
+
+		[SerializeField]
+		private Animator _animator;
+		public Animator Animator => _animator;
+
 
 		public float Anger => _angerTimer.Time / _maxHungerTime;
 
@@ -87,7 +91,6 @@ namespace Tojam2022
 			_sleepinessTimer = new Timer(_SleepinessTimeout);
 			_angerTimer = new Timer(_AngerTimeout);
 		}
-
 
 		private void _AngerTimeout()
 		{

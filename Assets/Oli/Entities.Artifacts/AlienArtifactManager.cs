@@ -1,6 +1,7 @@
 ﻿using Cirrus.Randomness;
 using Cirrus.Unity.Numerics;
 using Cirrus.Unity.Objects;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace Tojam2022
 
 		[SerializeField]
 		private Bounds _discoveryZoneBounds;
+
+		public Action<AlienArtifact> OnArtifactDiscovered; 
 
 		private void _OnArtifactDiscoveredTimeout()
 		{

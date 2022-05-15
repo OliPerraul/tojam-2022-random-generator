@@ -18,6 +18,9 @@ namespace Tojam2022
 		[SerializeField]
 		private StatUiItem _moneyStat;
 
+		[SerializeField]
+		private StatUiItem _healthStat;
+
 		//[SerializeField]
 		//private StatUiItem _hungerStat;
 
@@ -40,8 +43,8 @@ namespace Tojam2022
 
 			if (Alien.Instance.State == AlienState.Game)
 			{
-				//_hungerStat.Value = Alien.Instance.Hunger;
-				_moneyStat.Value = Alien.Instance.Money;
+				_healthStat.Value = Player.Instance.Health;
+				_moneyStat.Value = Player.Instance.Money;
 			}
 		}
 	}
