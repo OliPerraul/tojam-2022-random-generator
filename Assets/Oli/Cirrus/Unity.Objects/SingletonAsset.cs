@@ -1,4 +1,4 @@
-﻿using Cirrus.Unity.Editor;
+﻿//using Cirrus.Unity.Editor;
 using System.Linq;
 
 namespace Cirrus.Unity.Objects
@@ -15,18 +15,18 @@ namespace Cirrus.Unity.Objects
 			_instance;
 	}
 
-#if UNITY_EDITOR
-	public class EditorSingletonAssetBase : ScriptableObjectBase { }
+//#if UNITY_EDITOR
+//	public class EditorSingletonAssetBase : ScriptableObjectBase { }
 
-	public class EditorSingletonAssetBase<T> : SingletonAssetBase where T : SingletonAssetBase
-	{
-		private static T _instance;
+//	public class EditorSingletonAssetBase<T> : SingletonAssetBase where T : SingletonAssetBase
+//	{
+//		private static T _instance;
 
-		public static T Instance =>
-			_instance == null ?
-			_instance = AssetDatabaseUtils.FindObjectOfType<T>() :
-			_instance;
-	}
-#endif
+//		public static T Instance =>
+//			_instance == null ?
+//			_instance = AssetDatabaseUtils.FindObjectOfType<T>() :
+//			_instance;
+//	}
+//#endif
 
 }

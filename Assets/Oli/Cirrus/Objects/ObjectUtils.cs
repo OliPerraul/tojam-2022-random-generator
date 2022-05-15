@@ -54,7 +54,7 @@ namespace Cirrus.Objects
 			where T : IBase
 		{
 			var copy = (T)(object)copiable.MemberwiseCopy();
-			copy.DebugId = Base.GetNextID();
+			//copy.DebugId = Base.GetNextID();
 			return copy;
 		}
 

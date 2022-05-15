@@ -33,8 +33,10 @@ namespace Tojam2022
 		private bool _active = false;
 		public bool IsActive => _active;
 
+		//private bool _subscribed = false;
+
 		// TODO
-		public float Increment;
+		//public float Increment;
 
 		public float DeltaTime =>
 			_isFixedUpdate ? UnityEngine.Time.fixedDeltaTime : UnityEngine.Time.deltaTime;
@@ -167,8 +169,11 @@ namespace Tojam2022
 
 				OnTimeoutHandler?.Invoke();
 
-				if(_repeat) Reset();
-				else Stop();
+				if (_time >= _limit) // Only repeat if past limit
+				{
+					if (_repeat) Reset();
+					else Stop();
+				}
 			}
 		}
 

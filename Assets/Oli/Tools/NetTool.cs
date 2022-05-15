@@ -14,9 +14,28 @@ namespace Tojam2022
 		protected override void _Use(IEnumerable<EntityBase> entities)
 		{
 			foreach (var ent in entities)
-			{ 
-				
+			{
+				if (ent is AlienArtifact art)
+				{
+					_Capture(art);
+				}
 			}
+		}
+
+		private void _Capture(AlienArtifact ent)
+		{
+			switch (ent.Type)
+			{
+				case ArtifactType.Valuable:
+					Player.Instance.UpdateMoney(ent.Value);
+					break;
+				
+				case ArtifactType.Harmful:
+					Player.Instance.UpdateHealth(-ent.Value);
+					break;
+			}
+
+			ent.gameObject.Destroy();
 		}
 	}
 }

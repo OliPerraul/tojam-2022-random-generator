@@ -48,15 +48,16 @@ namespace Tojam2022
                 shopItem.Name = deco.Name;
                 shopItem.Price = deco.Price;
                 shopItem.Deco = deco;
-                shopItem.ShopItemBoughtEvent += _OnShopItemBought;
+                shopItem.OnBuyShopItemEvent += _OnShopItemBought;
             }
 		}
 
         private void _OnShopItemBought(ShopUiItem item)
         {
-            if (Player.Instance.Money > item.Deco.Price)
+            if (Player.Instance.Money >= item.Deco.Price)
             {
-                Player.Instance.Money -= item.Deco.Price;
+                item.BuyShopItem();
+                Player.Instance.UpdateMoney(-item.Deco.Price);
                 OnShopItemBoughtEvent?.Invoke(item.Deco);
             }
         }

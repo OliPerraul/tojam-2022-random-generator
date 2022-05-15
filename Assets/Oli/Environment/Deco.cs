@@ -12,10 +12,11 @@ using UnityEngine.AI;
 
 namespace Tojam2022
 {
-    public class Deco : ScriptableObject
-    {
-        [SerializeField]
-        public GameObject Prefab;
+	//public class Deco : ScriptableObject
+	public class Deco : MonoBehaviour
+	{
+        //[SerializeField]
+        //public GameObject Prefab;
 
         [SerializeField]
         public string Name = "Seaweed 01";
@@ -25,5 +26,7 @@ namespace Tojam2022
 
         [SerializeField]
         public float Happiness = 10.0f;
+
+        //public Action OnSoldEvent;
     }
 }

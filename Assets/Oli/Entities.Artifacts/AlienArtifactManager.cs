@@ -12,10 +12,11 @@ namespace Tojam2022
 	class AlienArtifactManager : SingletonComponentBase<AlienArtifactManager>
 	{
 
+		//[SerializeField]
 		private Timer _artifactDiscoveredTimer;
 
 		[SerializeField]
-		private Range_ _artifactDiscoveredTime = new Range_(1, 10);
+		private Range_ _artifactDiscoveredTime = new Range_(1, 5);
 
 		[SerializeField]
 		private List<AlienArtifact> _artifacts;
@@ -34,7 +35,7 @@ namespace Tojam2022
 			Vector3 discoveryPosition = _discoveryZoneBounds.RandomPosition().XY_(0);
 			prefab.Instantiate(discoveryPosition);
 
-			_artifactDiscoveredTimer.Reset(_artifactDiscoveredTime.Random());
+			_artifactDiscoveredTimer.Reset(_artifactDiscoveredTime.Random(), true);
 		}
 
 		public override void Awake()

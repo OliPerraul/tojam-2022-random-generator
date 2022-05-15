@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Oli/Menu.unity
     guid: e98a3ed1ecb0d294c9723b010e0daeb2
   - enabled: 1
-    path: Assets/Oli/GameOver.unity
-    guid: 3124657ca3b7ac74da2093d3c603ad02
-  - enabled: 1
     path: Assets/Oli/Game.unity
     guid: dd8cac7d7a277ad41b27a31b3d7ad6f1
+  - enabled: 1
+    path: Assets/Oli/GameOver.unity
+    guid: 3124657ca3b7ac74da2093d3c603ad02
   m_configObjects: {}

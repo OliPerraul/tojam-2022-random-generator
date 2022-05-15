@@ -37,7 +37,21 @@ namespace Tojam2022
 		}
 
 		[SerializeField]
-		public Deco Deco;
+		private Deco _deco;
+
+		public Deco Deco
+		{
+			get => _deco;
+			set
+			{
+				_deco = value;
+			}
+		}
+
+		private void _OnSold()
+		{
+			_soldTransform.gameObject.SetActive(true);
+		}
 
 		[SerializeField]
 		private TextMeshProUGUI _nameText;
@@ -48,16 +62,26 @@ namespace Tojam2022
 		[SerializeField]
 		private Button _button;
 
-		public Action<ShopUiItem> ShopItemBoughtEvent;
+		public Action<ShopUiItem> OnBuyShopItemEvent;
 
+		[SerializeField]
+		private RectTransform _soldTransform;
+		
 		public void Awake()
 		{
+			_soldTransform.gameObject.SetActive(false);
 			_button.onClick.AddListener(_OnButtonClicked);
 		}
 
-		public void _OnButtonClicked()
+		public void BuyShopItem()
 		{
-			ShopItemBoughtEvent?.Invoke(this);
+			_button.onClick.RemoveListener(_OnButtonClicked);
+			_soldTransform.gameObject.SetActive(true);
+		}
+
+		public void _OnButtonClicked()
+		{			
+			OnBuyShopItemEvent?.Invoke(this);
 		}
 	}
 }

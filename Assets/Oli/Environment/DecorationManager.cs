@@ -23,7 +23,7 @@ namespace Tojam2022
 		{
 			//AlienArtifactBase prefab = _artifacts.Choice(_artifacts.Select(x => x.Chance));
 			Vector3 discoveryPosition = _decorationZoneMeshBounds.RandomPosition().XY_(0);
-			deco.Prefab.Instantiate(null, discoveryPosition);
+			deco.Instantiate(null, discoveryPosition);
 
 			//_artifactDiscoveredTimer.Reset(_artifactDiscoveredTime.Random());
 		}

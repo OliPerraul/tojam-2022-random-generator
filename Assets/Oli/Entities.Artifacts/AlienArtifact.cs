@@ -17,7 +17,7 @@ namespace Tojam2022
         public float Chance = 0.5f;
 
         [SerializeField]
-        public float Price = 10;
+        public float Value = 10;
 
         [SerializeField]
         public ArtifactType Type = ArtifactType.Valuable;

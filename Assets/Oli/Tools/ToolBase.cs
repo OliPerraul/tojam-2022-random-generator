@@ -50,7 +50,7 @@ namespace Tojam2022
 
 
 		[SerializeField]
-		protected float _actionRange = 10;
+		protected float _toolActionRange = 2;
 
 
 		public void Awake()
@@ -73,7 +73,7 @@ namespace Tojam2022
 			if (!_cooldownTimer.IsActive)
 			{
 				
-				Collider[] colliders = Physics.OverlapSphere(Transform.position, _actionRange);
+				Collider[] colliders = Physics.OverlapSphere(Transform.position, _toolActionRange);
 
 				IEnumerable<EntityBase> ents = colliders
 				.Select(x => x.GetComponentInParent<EntityBase>())
