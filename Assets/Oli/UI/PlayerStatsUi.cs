@@ -13,16 +13,16 @@ using Cirrus.Unity.Objects;
 
 namespace Tojam2022
 {
-	public class AlienStatsUi : SingletonComponentBase<AlienStatsUi>
+	public class PlayerStatsUi : SingletonComponentBase<PlayerStatsUi>
 	{
 		[SerializeField]
 		private StatUiItem _moneyStat;
 
-		[SerializeField]
-		private StatUiItem _hungerStat;
+		//[SerializeField]
+		//private StatUiItem _hungerStat;
 
-		[SerializeField]
-		private StatUiItem _rageStat;
+		//[SerializeField]
+		//private StatUiItem _rageStat;
 
 		public override void Start()
 		{
@@ -40,8 +40,8 @@ namespace Tojam2022
 
 			if (Alien.Instance.State == AlienState.Game)
 			{
-				_hungerStat.Value = Alien.Instance.Hunger;
-				//_moneyStat.Value = Alien.Instance.Money;
+				//_hungerStat.Value = Alien.Instance.Hunger;
+				_moneyStat.Value = Alien.Instance.Money;
 			}
 		}
 	}

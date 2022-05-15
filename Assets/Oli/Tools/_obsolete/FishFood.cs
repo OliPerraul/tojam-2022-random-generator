@@ -20,6 +20,6 @@ namespace Tojam2022
         //public void FixedUpdate()
         //{
         //    _rigidbody.AddForce(Physics.gravity * _rigidbody.mass);
-        //}
+        //}        
     }
 }

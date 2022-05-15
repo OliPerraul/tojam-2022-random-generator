@@ -21,7 +21,7 @@ namespace Tojam2022
 		Money,		
 	}
 
-	public class AlienStatUiItem : CustomMonoBehaviourBase
+	public class StatUiItem : CustomMonoBehaviourBase
 	{
 		[SerializeField]
 		private string _name;

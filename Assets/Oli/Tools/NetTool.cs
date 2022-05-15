@@ -11,9 +11,12 @@ namespace Tojam2022
 {
 	public class NetTool : ToolBase
 	{
-		protected override void _Use()
+		protected override void _Use(IEnumerable<EntityBase> entities)
 		{
-			base._Use();
+			foreach (var ent in entities)
+			{ 
+				
+			}
 		}
 	}
 }
