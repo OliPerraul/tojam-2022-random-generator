@@ -15,11 +15,11 @@ namespace Tojam2022
 {
 	public class AlienStatsUi : SingletonComponentBase<AlienStatsUi>
 	{
-		[SerializeField]
-		private StatUiItem _moneyStat;
+		//[SerializeField]
+		//private StatUiItem _moneyStat;
 
-		[SerializeField]
-		private StatUiItem _hungerStat;
+		//[SerializeField]
+		//private StatUiItem _hungerStat;
 
 		[SerializeField]
 		private StatUiItem _rageStat;
@@ -40,7 +40,7 @@ namespace Tojam2022
 
 			if (Alien.Instance.State == AlienState.Game)
 			{
-				_hungerStat.Value = Alien.Instance.Hunger;
+				_rageStat.Value = Alien.Instance.Anger;
 				//_moneyStat.Value = Alien.Instance.Money;
 			}
 		}

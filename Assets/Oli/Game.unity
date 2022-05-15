@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -908,6 +908,50 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 191111200572738018, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
+      propertyPath: _decos.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 191111200572738018, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
+      propertyPath: _decos.Array.data[0]
+      value: 
+      objectReference: {fileID: 2542401498224589347, guid: c8781506866d8874d85f710f8c8f373f, type: 3}
+    - target: {fileID: 191111200572738018, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
+      propertyPath: _decos.Array.data[1]
+      value: 
+      objectReference: {fileID: 2542401498224589347, guid: a843c3eb6268ee04b824282204902c3e, type: 3}
+    - target: {fileID: 191111200572738018, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
+      propertyPath: _decos.Array.data[2]
+      value: 
+      objectReference: {fileID: 2542401498224589347, guid: 918076e7d51f8f747a422258e74c12bc, type: 3}
+    - target: {fileID: 191111200572738018, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
+      propertyPath: _decos.Array.data[3]
+      value: 
+      objectReference: {fileID: 2542401498224589347, guid: a8181b0ed8d79914ea4d7a9ae424bfb5, type: 3}
+    - target: {fileID: 191111200572738018, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
+      propertyPath: _decos.Array.data[4]
+      value: 
+      objectReference: {fileID: 2542401498224589347, guid: c318e299e2f9b1e40b4b340a12402205, type: 3}
+    - target: {fileID: 191111200572738018, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
+      propertyPath: _decos.Array.data[5]
+      value: 
+      objectReference: {fileID: 2542401498224589347, guid: c2eb981b56fd443429a644d6611245dd, type: 3}
+    - target: {fileID: 191111200572738018, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
+      propertyPath: _decos.Array.data[6]
+      value: 
+      objectReference: {fileID: 2542401498224589347, guid: fbb788944349efc4c94d1cd8581a4fc3, type: 3}
+    - target: {fileID: 191111200572738018, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
+      propertyPath: _decos.Array.data[7]
+      value: 
+      objectReference: {fileID: 2542401498224589347, guid: d730bc0f52dd8554fb33e79e48756f2f, type: 3}
+    - target: {fileID: 191111200572738018, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
+      propertyPath: _decos.Array.data[8]
+      value: 
+      objectReference: {fileID: 2542401498224589347, guid: 430f435b832ac2c478648691681dfa76, type: 3}
+    - target: {fileID: 191111200572738018, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
+      propertyPath: _decos.Array.data[9]
+      value: 
+      objectReference: {fileID: 2542401498224589347, guid: 53c7f2433be249b41bf7df53c63cd630, type: 3}
     - target: {fileID: 191111200872982096, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1042,7 +1086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2577730728383949945, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
       propertyPath: _name
-      value: Rage
+      value: Alien Rage
       objectReference: {fileID: 0}
     - target: {fileID: 2589501094590384026, guid: 6d5fbdc38ff52bf45afd06931a61139a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1321,6 +1365,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1246704976063248573, guid: 2fdc4b355b095264e851fd81eaf35bb9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5084971
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246704976063248573, guid: 2fdc4b355b095264e851fd81eaf35bb9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.6861138
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246704976063248573, guid: 2fdc4b355b095264e851fd81eaf35bb9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246704976063248573, guid: 2fdc4b355b095264e851fd81eaf35bb9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1246704976388077908, guid: 2fdc4b355b095264e851fd81eaf35bb9, type: 3}
       propertyPath: m_Name
       value: Environment
@@ -1367,6 +1427,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1246704976388077911, guid: 2fdc4b355b095264e851fd81eaf35bb9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246704977837099614, guid: 2fdc4b355b095264e851fd81eaf35bb9, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1569,6 +1633,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4862662857211908330, guid: 81e51151d8c7f9d44a00fbedaba73cc0, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c97969895c355cd47bcfbffe337ee590, type: 3}
+    - target: {fileID: 5885846741666594349, guid: 81e51151d8c7f9d44a00fbedaba73cc0, type: 3}
+      propertyPath: m_Name
+      value: Audio_Buy01
+      objectReference: {fileID: 0}
     - target: {fileID: 7313569731847435591, guid: 81e51151d8c7f9d44a00fbedaba73cc0, type: 3}
       propertyPath: m_RootOrder
       value: 3

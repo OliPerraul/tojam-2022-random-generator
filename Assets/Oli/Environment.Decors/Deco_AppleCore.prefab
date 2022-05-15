@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4784392556947642143
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 193257946190676936, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: m_Name
+      value: Deco_AppleCore
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106882540569521069, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106882540569521069, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106882540569521069, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106882540569521069, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106882540569521069, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106882540569521069, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106882540569521069, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106882540569521069, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106882540569521069, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106882540569521069, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106882540569521069, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002533507544902972, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: Name
+      value: Apple Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002533507544902972, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: Price
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7002533507544902972, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+      propertyPath: Happiness
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+--- !u!4 &7833713630796140734 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3374149003911251873, guid: e4ece617168d111428b60a022eedd5ee, type: 3}
+  m_PrefabInstance: {fileID: 4784392556947642143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6612141748753994486
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7833713630796140734}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.00011626348
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0036240604
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.000119486765
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}
+      propertyPath: m_Name
+      value: Garbage_AppleCore
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b9114add8c1e6384893c28cc9a23a3d5, type: 3}

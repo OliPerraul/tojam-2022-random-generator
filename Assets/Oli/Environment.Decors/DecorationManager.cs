@@ -21,7 +21,7 @@ namespace Tojam2022
 
 		private void _OnShopItemBought(Deco deco)
 		{
-			//AlienArtifactBase prefab = _artifacts.Choice(_artifacts.Select(x => x.Chance));
+			Alien.Instance.UpdateAnger(deco.Happiness);
 			Vector3 discoveryPosition = _decorationZoneMeshBounds.RandomPosition().XY_(0);
 			deco.Instantiate(null, discoveryPosition);
 

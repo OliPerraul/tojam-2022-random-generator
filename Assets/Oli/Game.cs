@@ -31,6 +31,12 @@ namespace Tojam2022
 		private GameState _gameState;
 		public GameState State => _gameState;
 
+		[SerializeField]
+		private AudioSource _mainAudio;
+
+		[SerializeField]
+		private AudioSource _titleAudio;
+
 		//private RandomizationAssetBase
 
 		public override void Awake()
@@ -72,12 +78,13 @@ namespace Tojam2022
 			{
 				case GameState.None:
 					if (SceneManager.GetActiveScene().name == "Game") SetState(GameState.Game);
+					else if (SceneManager.GetActiveScene().name == "Menu") SetState(GameState.Menu);
 					break;
 
 				case GameState.Game:
 					AlienArtifactManager.Instance.DoStart();
 					Alien.Instance.onAlienDiedHandler += _OnAlienDied;
-					Alien.Instance.SetState(AlienState.Game);
+					Alien.Instance.SetState(AlienState.Game);					
 					break;
 			}
 		}
@@ -101,22 +108,35 @@ namespace Tojam2022
 			// Exit from state
 			switch (_gameState)
 			{
+				case GameState.GameOver:
+				case GameState.Menu:
+					_titleAudio.Stop();
+					break;
+
 				case GameState.Game:
 					AlienArtifactManager.Instance.DoStop();
 					Alien.Instance.onAlienDiedHandler -= _OnAlienDied;
+					_mainAudio.Stop();
 					break;
 			}
 
 			// Enter state
 			switch (state)
 			{
+				case GameState.Menu:
+					_gameState = state;
+					LoadScene("Menu");
+					_mainAudio.Play();
+					break;
 				case GameState.Game:
 					_gameState = state;
 					LoadScene("Game");
+					_mainAudio.Play();
 					break;
 				case GameState.GameOver:
 					_gameState = state;
 					LoadScene("GameOver");
+					_titleAudio.Play();
 					break;
 			}
 			

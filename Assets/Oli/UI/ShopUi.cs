@@ -10,6 +10,7 @@ using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Cirrus.Unity.Objects;
+using Cirrus.Unity.Numerics;
 
 namespace Tojam2022
 {
@@ -42,13 +43,20 @@ namespace Tojam2022
 		{
             base.Start();
 
+            //_decos.Sort(Comparer. x => x.Price);
+            _decos.Sort((a, b) => a.Price.CompareTo(b.Price));
+
             foreach (var deco in _decos)
             {
-                var shopItem = _shopItemPrefab.Instantiate(_shopItemTransform);
-                shopItem.Name = deco.Name;
-                shopItem.Price = deco.Price;
-                shopItem.Deco = deco;
-                shopItem.OnBuyShopItemEvent += _OnShopItemBought;
+                int quantity = deco.ShopQuantity.Random();
+                for (int i = 0; i < quantity; i++)
+                {
+                    var shopItem = _shopItemPrefab.Instantiate(_shopItemTransform);
+                    shopItem.Name = deco.Name;
+                    shopItem.Price = deco.Price;
+                    shopItem.Deco = deco;
+                    shopItem.OnBuyShopItemEvent += _OnShopItemBought;
+                }
             }
 		}
 

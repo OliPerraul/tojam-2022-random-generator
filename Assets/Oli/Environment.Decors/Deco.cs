@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Cirrus.Unity.Numerics;
 
 namespace Tojam2022
 {
@@ -26,6 +27,10 @@ namespace Tojam2022
 
         [SerializeField]
         public float Happiness = 10.0f;
+        
+
+        [SerializeField]
+        public RangeInt_ ShopQuantity = new RangeInt_(1, 4);
 
         //public Action OnSoldEvent;
     }

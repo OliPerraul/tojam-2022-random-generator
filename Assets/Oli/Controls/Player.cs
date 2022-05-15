@@ -1,5 +1,7 @@
-﻿using Cirrus.Unity.Numerics;
+﻿using Cirrus.Randomness;
+using Cirrus.Unity.Numerics;
 using Cirrus.Unity.Objects;
+using Cirrus.Unity.Randomness;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,6 +19,9 @@ namespace Tojam2022
 
 		[SerializeField]
 		private AudioSource _buyAudioSource;
+
+		[SerializeField]
+		private AudioSource _buyAudioSource2;
 
 		[SerializeField]
 		private float _money = 0;
