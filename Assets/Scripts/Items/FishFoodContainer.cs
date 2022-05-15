@@ -20,6 +20,10 @@ namespace Tojam2022
 
         [SerializeField] List<Food> foods = new List<Food>();
 
+        [SerializeField] GameObject leftSide;
+        [SerializeField] GameObject rightSide;
+        [SerializeField] GameObject downSide;
+
         public void Start()
         {
             foreach (Food f in foods)
@@ -42,13 +46,26 @@ namespace Tojam2022
         protected override void _Use(IEnumerable<EntityBase> ents)
         {
             Debug.LogWarning("Use Food");
-            if (foods.Count > 0)
+            Debug.LogWarning("x" + gameObject.transform.GetChild(0).transform.position.x);
+            Debug.LogWarning("y" + gameObject.transform.GetChild(0).transform.position.y);
+            Debug.LogWarning("left" + leftSide.transform.position.x);
+            Debug.LogWarning("right" + rightSide.transform.position.x);
+            Debug.LogWarning("down" + downSide.transform.position.y);
+
+
+            if (gameObject.transform.GetChild(0).transform.position.x > leftSide.transform.position.x &&
+                gameObject.transform.GetChild(0).transform.position.x < rightSide.transform.position.x &&
+                gameObject.transform.GetChild(0).transform.position.y > downSide.transform.position.y)
             {
-                foods[foods.Count - 1].gameObject.SetActive(true);
-                foods[foods.Count - 1].DropFoodAtDestination(Transform.position,
-                    new Vector3(Transform.position.x, Random.Range(minDropDestinationY, maxDropDestinationY), Transform.position.z));
-                addNewFood?.Invoke(foods[foods.Count - 1]);
-                foods.RemoveAt(foods.Count - 1);
+                if (foods.Count > 0)
+                {
+                    foods[foods.Count - 1].gameObject.SetActive(true);
+                    foods[foods.Count - 1].DropFoodAtDestination(Transform.position,
+                        new Vector3(Transform.position.x, Random.Range(minDropDestinationY, maxDropDestinationY), Transform.position.z));
+                    addNewFood?.Invoke(foods[foods.Count - 1]);
+                    foods.RemoveAt(foods.Count - 1);
+                    Debug.LogWarning("Use Food 2");
+                }
             }
         }
 

@@ -20,6 +20,8 @@ namespace Tojam2022
 			get { return _swimLimits; }
 		}
 
+        [SerializeField] Vector3 _swimLimitsRange;
+
 
 		[SerializeField] Vector3 _goalPos;
 		public Vector3 _GoalPos
@@ -80,12 +82,16 @@ namespace Tojam2022
 			while (true)
 			{
 				//Debug.LogWarning("Move to goal2");
-				
 
-				_goalPos = this.transform.position + new Vector3(Random.Range(-_swimLimits.x, _swimLimits.x),
-																		   Random.Range(-_swimLimits.y, _swimLimits.y),
-																   Random.Range(-_swimLimits.z, _swimLimits.z));
-				yield return new WaitForSeconds(5);
+				_swimLimits.x = Random.Range(-_swimLimitsRange.x, _swimLimitsRange.x);
+				_swimLimits.y = Random.Range(-_swimLimitsRange.y, _swimLimitsRange.y);
+				_swimLimits.z = Random.Range(-_swimLimitsRange.z, _swimLimitsRange.z);
+
+				_goalPos = this.transform.position + new Vector3(_swimLimits.x, _swimLimits.y, _swimLimits.z);
+
+				transform.position = _goalPos;
+				Debug.LogWarning("move towards");
+				yield return new WaitForSeconds(20);
 			}
 		}
 
@@ -95,16 +101,27 @@ namespace Tojam2022
 		{
 			currentFoodPositions.Add(newFood);
 
-			_goalPos = this.transform.position + new Vector3(Random.Range(-_swimLimits.x, _swimLimits.x),
-																		   Random.Range(-_swimLimits.y, _swimLimits.y),
-																   Random.Range(-_swimLimits.z, _swimLimits.z));
-			transform.position = newFood.transform.position;
+			transform.position = newFood._Destination;
 
+			_swimLimits.x = 4;
+			_swimLimits.y = 2;
+
+			_swimLimits.z = 4;
+			_goalPos = this.transform.position + new Vector3(_swimLimits.x, _swimLimits.y, _swimLimits.z);
+			//_goalPos = newFood.transform.position /*+ new Vector3(0,2,0)*/;
+			Debug.LogWarning("move towards2");
 		}
 
 		void UpdateFoodList(Food eatenFood)
 		{
 			currentFoodPositions.Remove(eatenFood);
+			Destroy(eatenFood.gameObject);
+			_swimLimits.x = Random.Range(-_swimLimitsRange.x, _swimLimitsRange.x);
+			_swimLimits.y = Random.Range(-_swimLimitsRange.y, _swimLimitsRange.y);
+			_swimLimits.z = Random.Range(-_swimLimitsRange.z, _swimLimitsRange.z);
+
+			_goalPos = this.transform.position + new Vector3(_swimLimits.x, _swimLimits.y, _swimLimits.z);
+			Debug.LogWarning("move towards3");
 		}
 
 		//IEnumerator MoveTowardGoal()
